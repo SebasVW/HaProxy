@@ -25,6 +25,7 @@ Se crea una configuración con versión 2 pára los boxes ha utilizar. Con ello 
 
  
 Vagrant.configure("2") do |config|
+
   config.vm.define "web1" do |w|
 
 Una vez definido el nombre de la VM se procede a configurarla previamente, sobre el cual se asigna una cantidad de RAM y CPU a la VM.
