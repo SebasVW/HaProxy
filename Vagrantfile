@@ -27,7 +27,7 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define "hap" do |hap|
-      #hap.vm.network :private_network, ip: "192.168.33.10"
+      hap.vm.network :private_network, ip: "192.168.33.10"
       hap.vm.box = "bento/ubuntu-16.04"
       hap.vm.provision "shell" , path: "hap.sh"
   end
