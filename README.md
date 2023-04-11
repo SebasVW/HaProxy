@@ -62,12 +62,21 @@ Por último, se asegura que la máquina virtual tenga conexión a la carpeta htm
  
  
  listen webfarm 0.0.0.0:80
+
 	mode http
+
 	stats enable
+
     	stats uri /haproxy?stats
+
     	balance roundrobin
+
     	option httpclose
+
     	option forwardfor
+
     	server WebServer1 192.168.33.11:80 check
+
     	server WebServer2 192.168.33.12:80 check
+
  
