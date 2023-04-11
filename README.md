@@ -30,6 +30,8 @@ Vagrant.configure("2") do |config|
 
 Una vez definido el nombre de la VM se procede a configurarla previamente, sobre el cual se asigna una cantidad de RAM y CPU a la VM.
 
+      ww.vm.provider :virtualbox do |vb| 
+         vb.customize ["modifyvm", :id, "--memory", 512, "--cpus", 1, "--name", "web2"]
 
 Se asigna una dirección IP con el siguiente comando :
 
@@ -54,4 +56,18 @@ Por último, se asegura que la máquina virtual tenga conexión a la carpeta htm
        destination: "/var/www/html/index.html"
   end
 
+ *HaProxy.cfg*
+ 
+ Este archivo tiene la configuración base del balanceador de carga, en el cual se puede establecer las páginas web y los puertos. HaProxy tambien tiene un servidor web por el cual se puede observar analizar visualmente las  solicitudes y la carga. Para ello se añade el apartado del uri sobre la Ip de nuestro HaProxy para ingresar a su servicio web.
+ 
+ 
+ listen webfarm 0.0.0.0:80
+	mode http
+	stats enable
+    	stats uri /haproxy?stats
+    	balance roundrobin
+    	option httpclose
+    	option forwardfor
+    	server WebServer1 192.168.33.11:80 check
+    	server WebServer2 192.168.33.12:80 check
  
