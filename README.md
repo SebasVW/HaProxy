@@ -48,8 +48,10 @@ Se asigna el puierto 8080 para poder ingresar desde nuestra máquina y validar o
 
       w.vm.network "forwarded_port", guest:80, host: 8080
 			
-Por último, se asegura que la máquina virtual tenga conexión a la carpeta html donde se encuentra creada la p
+Por último, se asegura que la máquina virtual tenga conexión a la carpeta html donde se encuentra creada la p+agina web. Para la segunda página web se aplica la misma configuración, cambiando el nombre y algunos parametros.
+
        w.vm.provision "file", source: "html/index.html",
        destination: "/var/www/html/index.html"
   end
 
+ 
